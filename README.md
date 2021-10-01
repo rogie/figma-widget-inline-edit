@@ -1,4 +1,4 @@
-Counter
+Widget Inline Text Editing
 ===
 
 This sample widget should work out of the box without any build steps.
