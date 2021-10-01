@@ -62,12 +62,7 @@ function TextEditor() {
         figma.on("close", () => { resolve(null)})
       })
     }
-    /*          <AutoLayout x={0} y={0} opacity={0} width="hug-contents">
-            <Text {...textProps} opacity={0}>{state.value.substr(0,state.caret)}</Text>
-            <AutoLayout fill="#9B51E0" opacity={0.5}>
-              <Text {...textProps} opacity={0}>{state.selection}</Text>
-            </AutoLayout>
-          </AutoLayout>*/
+    
 
     const render = () => {
       return state.editing? 
@@ -76,6 +71,13 @@ function TextEditor() {
             <Text {...textProps} opacity={0}>{state.value.substr(0,state.caret)}</Text>
             <Frame height={textProps.lineHeight} fill="#9B51E0" opacity={0.5} width={2} />
           </AutoLayout>
+          {// selection box (it felt too native, like i could select)
+          /*<AutoLayout x={0} y={0} opacity={0} width="hug-contents">
+            <Text {...textProps} opacity={0}>{state.value.substr(0,state.caret)}</Text>
+            <AutoLayout fill="#9B51E0" opacity={0.5}>
+              <Text {...textProps} opacity={0}>{state.selection}</Text>
+            </AutoLayout>
+          </AutoLayout>*/}
           <Text {...textProps}>{state.value}</Text>
         </Frame>
         :
