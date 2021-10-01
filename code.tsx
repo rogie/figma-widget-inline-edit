@@ -27,7 +27,7 @@ function TextEditor() {
             input.addEventListener("keyup", function(e){
                 parent.postMessage({ pluginMessage: {
                   value: this.value.trim(),
-                  /*selection: window.getSelection().toString(),*/
+                  selection: window.getSelection().toString(),
                   caret: e.target.selectionStart
                 }},'*')
               })
@@ -51,7 +51,7 @@ function TextEditor() {
           if(message !== 'close'){
             state.value = value 
             state.caret = caret
-            //state.selection = selection
+            state.selection = selection
             setState(state)
           } else if(message === 'close'){
             state.editing = false 
