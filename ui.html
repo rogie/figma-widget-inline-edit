@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://min.gitcdn.link/repo/thomas-lowry/figma-plugin-ds/master/dist/figma-plugin-ds.css" />
+    <style>
+        body{
+            padding: 1rem;
+        }
+    </style>
+  </head>
+  <body>
+    <script>
+        const importUsers = () => {
+            let input = document.querySelector('#members')
+            parent.postMessage(
+              { pluginMessage: { importText: input.value } },
+              "*"
+            )
+        }
+    </script>
+    <label class="label" for="members">Enter members (comma separated)</label>
+    <textarea id="members" placeholder="Member 1, Member 2,..." class="textarea" rows="4"></textarea>
+    <button onclick="importUsers()" class="button button--primary mt-xsmall">Import</button>
+    <script>
+        document.querySelector('#members').focus()
+    </script>
+  </body>
+</html>
