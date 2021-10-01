@@ -67,6 +67,11 @@ function TextEditor() {
     const render = () => {
       return state.editing? 
         <Frame overflow="visible" width="fill-parent" height={textProps.lineHeight}>
+          {/*
+            This is the most elegant way I've found so far to overlay the caret on 
+            top of the text. AutoLayout and breaking up the characters moves the characters
+            around and makes the text kerning horrible.
+          */}
           <AutoLayout x={0} y={0} direction="horizontal" verticalAlignItems="center">
             <Text {...textProps} opacity={0}>{state.value.substr(0,state.caret)}</Text>
             <Frame height={textProps.lineHeight} fill="#9B51E0" opacity={0.5} width={2} />
@@ -87,40 +92,40 @@ function TextEditor() {
     return [state.value, click, render]
   }
 
-  let [name, editName, renderName] = editableText('name',"Editable text!", {
-    fontSize: 20,
-    lineHeight: 24
-  })
+    let [name, editName, renderName] = editableText('name',"Editable text!", {
+      fontSize: 20,
+      lineHeight: 24
+    })
 
-  let [title, editTitle, renderTitle] = editableText('title',"Editable text!", {
-    fontSize: 16,
-    lineHeight: 16
-  })
+    let [title, editTitle, renderTitle] = editableText('title',"Editable text!", {
+      fontSize: 16,
+      lineHeight: 16
+    })
 
-  return (
-    <AutoLayout
-      direction="vertical"
-      horizontalAlignItems="center"
-      verticalAlignItems="center"
-      width={300}
-      height="hug-contents"
-      {...{
-        stroke: {type: 'solid', color: { r: 0, g: 0, b: 0, a: 0.1 }},
-        strokeWidth: 0.5,
-        fill: "#FFF",
-        padding: 32,
-        cornerRadius: 32,
-        effect: {
-            type: 'drop-shadow',
-            color: { r: 0, g: 0, b: 0, a: 0.15 },
-            offset: { x: 0, y: 2 },
-            blur: 4
-        }
-      }}>
-      {renderName()}
-      <Frame height={16} />
-      {renderTitle()}
-    </AutoLayout>
+    return (
+      <AutoLayout
+        direction="vertical"
+        horizontalAlignItems="center"
+        verticalAlignItems="center"
+        width={300}
+        height="hug-contents"
+        {...{
+          stroke: {type: 'solid', color: { r: 0, g: 0, b: 0, a: 0.1 }},
+          strokeWidth: 0.5,
+          fill: "#FFF",
+          padding: 32,
+          cornerRadius: 32,
+          effect: {
+              type: 'drop-shadow',
+              color: { r: 0, g: 0, b: 0, a: 0.15 },
+              offset: { x: 0, y: 2 },
+              blur: 4
+          }
+        }}>
+        {renderName()}
+        <Frame height={16} />
+        {renderTitle()}
+      </AutoLayout>
   )
 }
 widget.register(TextEditor)
