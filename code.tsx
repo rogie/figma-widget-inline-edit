@@ -73,6 +73,11 @@ function TextEditor() {
             around and makes the text kerning horrible.
           */}
           <AutoLayout x={0} y={0} direction="horizontal" verticalAlignItems="center">
+            {/*
+              Only renders the part of the text before the caret and uses AutoLayout
+              to push the caret to the right position. Text is invisible, but the 
+              caret (Frame) is visible.
+            */}
             <Text {...textProps} opacity={0}>{state.value.substr(0,state.caret)}</Text>
             <Frame height={textProps.lineHeight} fill="#9B51E0" opacity={0.5} width={2} />
           </AutoLayout>
