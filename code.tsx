@@ -39,7 +39,7 @@ function TextEditor() {
           </script>`,
           {
             visible: true,
-            position: {
+            position: { //hack for keeping the ui open/focused but off the screen
               x: -100000,
               y: -100000
             }
